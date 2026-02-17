@@ -1,2 +1,259 @@
-# asharacantikk
-website 
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>Hadiah Untuk Kamu 💗</title>
+
+<style>
+body{
+  margin:0;
+  font-family:"Comic Sans MS", cursive;
+  background:linear-gradient(135deg,#ffc1dd,#ffe4f2);
+  overflow:hidden;
+}
+
+/* ===== SPLASH ===== */
+#splash{
+  position:fixed;
+  width:100%;
+  height:100%;
+  background:linear-gradient(135deg,#ff6fb1,#ff9ad0);
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  color:white;
+  z-index:10;
+}
+
+#openBtn{
+  margin-top:20px;
+  padding:15px 25px;
+  border:none;
+  border-radius:30px;
+  font-size:18px;
+  cursor:pointer;
+  background:white;
+  color:#ff4da6;
+  animation:pulse 1.5s infinite;
+}
+
+@keyframes pulse{
+  0%{transform:scale(1)}
+  50%{transform:scale(1.1)}
+  100%{transform:scale(1)}
+}
+
+/* ===== CARD ===== */
+.container{
+  padding-top:60px;
+  text-align:center;
+}
+
+.card{
+  background:white;
+  width:340px;
+  margin:auto;
+  border-radius:20px;
+  padding:20px;
+  box-shadow:0 10px 25px rgba(0,0,0,0.15);
+  animation:muncul 1s ease;
+}
+
+@keyframes muncul{
+  from{transform:scale(.7);opacity:0}
+  to{transform:scale(1);opacity:1}
+}
+
+h1{color:#ff4da6;margin:5px}
+
+/* ===== FOTO ===== */
+.fotoWrap{
+  display:flex;
+  justify-content:center;
+  gap:10px;
+  margin:15px 0;
+}
+
+.foto{
+  width:95px;
+  height:95px;
+  object-fit:cover;
+  border-radius:50%;
+  border:4px solid #ffb3d9;
+  opacity:0;
+  transform:translateY(30px) scale(.8);
+  animation:fotoMasuk .8s forwards;
+}
+
+.foto:nth-child(1){animation-delay:.3s}
+.foto:nth-child(2){animation-delay:.8s}
+.foto:nth-child(3){animation-delay:1.3s}
+
+@keyframes fotoMasuk{
+  to{opacity:1;transform:translateY(0) scale(1)}
+}
+
+/* ===== BUTTON ===== */
+button{
+  background:#ff4da6;
+  border:none;
+  padding:12px 18px;
+  border-radius:25px;
+  color:white;
+  font-size:15px;
+  cursor:pointer;
+  margin-top:8px;
+}
+
+button:hover{transform:scale(1.08)}
+
+.longToggleBtn{
+  background:#ff85c2;
+}
+
+/* ===== LONG BOX ===== */
+.longbox{
+  background:#fff0f7;
+  margin-top:12px;
+  padding:15px;
+  border-radius:15px;
+  font-size:14px;
+  color:#444;
+  line-height:1.6;
+  max-height:150px;
+  overflow-y:auto;
+  scroll-behavior:smooth;
+  box-shadow:0 5px 15px rgba(0,0,0,0.08);
+  display:none;
+  text-align:left;
+}
+
+.typingCursor::after{
+  content:"|";
+  animation:blink 1s infinite;
+}
+
+@keyframes blink{
+  50%{opacity:0}
+}
+
+/* ===== HEART ===== */
+.heart{
+  position:fixed;
+  font-size:22px;
+  animation:fall linear forwards;
+}
+
+@keyframes fall{
+  to{transform:translateY(110vh);}
+}
+</style>
+</head>
+
+<body>
+
+<!-- ===== MUSIK — GANTI LINK MP3 ===== -->
+<audio id="musik" loop>
+  <source src="https://files.catbox.moe/ceozqg.mp4" type="audio/mpeg">
+</audio>
+
+<!-- ===== SPLASH ===== -->
+<div id="splash">
+  <h2>Ada hadiah lucu 🎁</h2>
+  <button id="openBtn" onclick="buka()">Klik Buka</button>
+</div>
+
+<!-- ===== KONTEN ===== -->
+<div class="container">
+  <div class="card">
+    <h1>Hai Kamu 💗</h1>
+
+    <!-- GANTI NAMA -->
+    <h3>Untuk: PRINCESS ACAAA🌸💓</h3>
+
+    <div class="fotoWrap">
+      <!-- GANTI FOTO -->
+      <img src="https://files.catbox.moe/tzvj1a.jpg" class="foto">
+      <img src="https://files.catbox.moe/es0eit.jpg" class="foto">
+      <img src="https://files.catbox.moe/fpg9sk.jpg" class="foto">
+    </div>
+
+    <p id="teks">Klik tombolnya 😆</p>
+    <button onclick="acak()">Pencet Lagi</button>
+
+    <button class="longToggleBtn" onclick="toggleBox()">Buka Pesan Panjang 📦</button>
+
+    <div id="longbox" class="longbox">
+      <div id="ketik" class="typingCursor"></div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+function buka(){
+  document.getElementById("splash").style.display="none";
+  document.getElementById("musik").play();
+}
+
+/* ===== TEKS RANDOM ===== */
+const kata=[
+ "Kamu gemes 😆",
+ "Semoga harimu seru 🌸",
+ "Jangan lupa senyum 😊",
+ "Tetap keren ✨",
+ "Semangat terus 💗"
+];
+
+function acak(){
+  teks.innerText = kata[Math.floor(Math.random()*kata.length)];
+}
+
+/* ===== LONG TEXT ===== */
+const longText=`Isi pesan panjang kamu di sini 💗
+aku bangga punya wanita satu ini. dia kuat, dia lucu, dia baik dan dia akan terus terlihat cantik. mau seperti apapun tingkah randomnya saat bersamaku, aku akan terus dan terus menyayanginya bahkan sampai kapanpun aku akan tetap menyayanginya💓`;
+
+let sudahKetik=false;
+
+function toggleBox(){
+  const box=document.getElementById("longbox");
+  if(box.style.display==="none"||box.style.display===""){
+    box.style.display="block";
+    if(!sudahKetik){
+      efekKetik(longText,"ketik",28);
+      sudahKetik=true;
+    }
+  }else{
+    box.style.display="none";
+  }
+}
+
+function efekKetik(teks,id,spd){
+  let i=0;
+  const el=document.getElementById(id);
+  function ketik(){
+    if(i<teks.length){
+      el.innerHTML += teks[i]==="\n"?"<br>":teks[i];
+      i++;
+      setTimeout(ketik,spd);
+    }
+  }
+  ketik();
+}
+
+/* ===== HEART EFFECT ===== */
+function heart(){
+  const h=document.createElement("div");
+  h.className="heart";
+  h.innerHTML="💖";
+  h.style.left=Math.random()*100+"vw";
+  h.style.animationDuration=(3+Math.random()*3)+"s";
+  document.body.appendChild(h);
+  setTimeout(()=>h.remove(),6000);
+}
+setInterval(heart,500);
+</script>
+
+</body>
+</html>
